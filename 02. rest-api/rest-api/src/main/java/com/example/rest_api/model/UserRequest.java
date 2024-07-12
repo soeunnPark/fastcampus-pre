@@ -18,4 +18,21 @@ public class UserRequest {
     private String email;
     private Boolean isKorean; //is_korean
 
+    public String name() {
+        return this.userName;
+    }
+
+    public int humanAge() {
+        return this.userAge;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRequest{" +
+                "userName='" + userName + '\'' +
+                ", userAge=" + userAge +
+                ", email='" + email + '\'' +
+                ", isKorean=" + isKorean +
+                '}';
+    }
 }
