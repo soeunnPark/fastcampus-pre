@@ -22,9 +22,9 @@ public class PostApiController {
     }
 
     @PostMapping("/user")
-    public void user(
+    public UserRequest user(
             @RequestBody UserRequest userRequest
             ) {
-        System.out.println(userRequest);
+        return userRequest;
     }
 }
