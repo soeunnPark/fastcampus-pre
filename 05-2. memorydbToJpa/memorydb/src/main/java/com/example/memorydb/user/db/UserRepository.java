@@ -4,6 +4,8 @@ import com.example.memorydb.db.SimpleDataRepository;
 import com.example.memorydb.user.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 
 // 어떤 entity를 다룰 것인지 Generic으로 표시: UserEntity
 // id에 대한 타입 지정: Long
@@ -11,6 +13,20 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     // service가 아닌 interface
     // 어노테이션 쓰지 않아도 됨
+
+
+    // 모든 데이터를 찾을 것임
+    // select * from user where score > [??]
+    // 이 쿼리문을 workbench에서 실행
+    public List<UserEntity> findAllByScoreGreaterThanEqual(int sc);
+    // 쿼리 메서드
+    // sql 쿼리로 날리지 않고 메서드 형식의 자바 문법으로 쿼리를 날리게 된다.
+
+    // SQL 쿼리 메서드
+
+
+
+
 }
 
 
