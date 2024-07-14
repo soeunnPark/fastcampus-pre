@@ -29,7 +29,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void delete(Long id) {
+    public void delete(UserEntity id) {
         userRepository.delete(id);
     }
 
