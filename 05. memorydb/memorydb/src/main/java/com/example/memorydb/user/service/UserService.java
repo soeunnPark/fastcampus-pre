@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,5 +27,13 @@ public class UserService {
     public List<UserEntity> findAll() {
         // save
         return userRepository.findAll();
+    }
+
+    public void delete(Long id) {
+        userRepository.delete(id);
+    }
+
+    public Optional<UserEntity> findById(Long id) {
+        return userRepository.findById(id);
     }
 }

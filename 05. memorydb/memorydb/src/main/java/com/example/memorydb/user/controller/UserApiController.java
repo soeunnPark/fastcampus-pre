@@ -15,6 +15,7 @@ import java.util.List;
 public class UserApiController {
 
     private final UserService userService;
+
     @PutMapping("")
     public UserEntity create(
             @RequestBody UserEntity userEntity
@@ -23,8 +24,29 @@ public class UserApiController {
 
     }
 
+    @GetMapping("/all")
+    public List<UserEntity> findAll() {
+        return userService.findAll();
+    }
 
+    // delete
+    @DeleteMapping("/id/{id}")
+    public void delete(
+            @PathVariable Long id
+    ) {
+        userService.delete(id);
 
+    }
+
+    // findBy id -> path variable
+
+    @GetMapping("/id/{id}")
+    public UserEntity findOne(
+            @PathVariable Long id
+    ) {
+        var response = userService.findById(id);
+        return response.get();
+    }
 
 
 }
