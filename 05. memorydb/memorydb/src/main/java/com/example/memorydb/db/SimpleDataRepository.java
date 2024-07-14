@@ -23,7 +23,7 @@ abstract public class SimpleDataRepository<T extends Entity, ID extends Long> im
     @Override
     public T save(T data) {
 
-        if(Objects.isNull(data)) {
+        if (Objects.isNull(data)) {
             throw new RuntimeException("Data is null");
         }
 
@@ -35,9 +35,10 @@ abstract public class SimpleDataRepository<T extends Entity, ID extends Long> im
                 })
                 .findFirst();
 
-        if(prevData.isPresent()) {
+        if (prevData.isPresent()) {
             // 기존 데이터 있는 경우
-            dataList.remove(prevData);
+            // Optional<UserEntity>
+            dataList.remove(prevData.get());
             dataList.add(data);
         } else {
             // 없는 경우
@@ -83,8 +84,9 @@ abstract public class SimpleDataRepository<T extends Entity, ID extends Long> im
                     return (it.getId().equals(id));
                 })
                 .findFirst();
-        if(deleteEntity.isPresent()) {
-            dataList.remove(deleteEntity);
+
+        if (deleteEntity.isPresent()) {
+            dataList.remove(deleteEntity.get());
         }
     }
 
