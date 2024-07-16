@@ -3,6 +3,7 @@ package com.example.memorydb.user.controller;
 import com.example.memorydb.user.model.UserEntity;
 import com.example.memorydb.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,5 +49,16 @@ public class UserApiController {
         return response.get();
     }
 
+
+
+    @GetMapping("/min_max")
+    public List<UserEntity> filterScore(
+            @RequestParam int min,
+            @RequestParam int max
+
+    ) {
+        return userService.filterScore(min, max);
+
+    }
 
 }

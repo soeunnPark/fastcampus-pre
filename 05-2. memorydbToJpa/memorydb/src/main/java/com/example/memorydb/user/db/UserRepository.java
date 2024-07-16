@@ -3,6 +3,7 @@ package com.example.memorydb.user.db;
 import com.example.memorydb.db.SimpleDataRepository;
 import com.example.memorydb.user.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -23,6 +24,20 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     // sql 쿼리로 날리지 않고 메서드 형식의 자바 문법으로 쿼리를 날리게 된다.
 
     // SQL 쿼리 메서드
+
+
+    // 카멜 case 로 작성
+    // select * from user where score >= ?? AND score <= ??
+    List<UserEntity> findAllByScoreGreaterThanEqualAndScoreLessThanEqual(int min, int max);
+
+
+
+    @Query(
+        "select u from user u where u.score >= ?1 AND score <= ?2"
+    )
+    List<UserEntity> score (int min, int max);
+
+
 
 
 

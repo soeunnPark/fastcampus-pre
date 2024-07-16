@@ -37,7 +37,16 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    // 오버로딩
+    // 매개변수 1개
     public List<UserEntity> filterScore(int score) {
         return userRepository.findAllByScoreGreaterThanEqual(score);
     }
+
+
+    // 매개변수 2개
+    public List<UserEntity> filterScore(int min, int max) {
+        return userRepository.findAllByScoreGreaterThanEqualAndScoreLessThanEqual(min, max);
+    }
 }
+
